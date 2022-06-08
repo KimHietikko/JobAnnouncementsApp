@@ -1,14 +1,27 @@
 {
-  "Post": {
-    "title": { "string": {} },
-    "comments": {
-      "hasMany": "Comment"
-    }
-  },
-  "Comment": {
-    "body": { "string": {} },
-    "post": {
-      "belongsTo": "Post"
+  "Job": {
+    "title": {
+      "loremWords": {
+        "minLength": 5,
+        "maxLength": 50
+      }
+    },
+    "body": {
+      "loremParagraphs": {
+        "minLength": 10,
+        "maxLength": 100
+      }
+    },
+    "location": {
+      "string": [
+        "Helsinki",
+        "Jyväskylä",
+        "Tampere",
+        "Hämeenlinna"
+      ]
+    },
+    "salary": {
+      { "int": { "min": 1000, "max": 10000 } }
     }
   }
 }
