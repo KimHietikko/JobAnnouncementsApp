@@ -4,7 +4,7 @@ import JobForm from "./components/JobForm";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <div className="job-app">
       <Router>
@@ -16,6 +16,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
