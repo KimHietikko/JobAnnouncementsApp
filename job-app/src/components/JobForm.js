@@ -14,10 +14,10 @@ function JobForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (location.state.edit) {
+    if (location?.state?.edit) {
       fetch(
         "https://mockend.com/KimHietikko/reacttask/jobs/" +
-          location.state.job.id,
+          location?.state?.job?.id,
         {
           method: "PUT",
           headers: {
@@ -79,13 +79,13 @@ function JobForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className="job-form">
-        {location.state.edit ? (
+        {location?.state?.edit ? (
           <>
             <h1 className="margin-top">Edit the job</h1>
             <h3 className="margin-top">Job title</h3>
             <input
               placeholder="Update a job title"
-              value={location.state.job.title}
+              value={location?.state?.job?.title}
               onChange={handleChange}
               name="text"
               className="job-input edit"
@@ -93,7 +93,7 @@ function JobForm() {
             <h3 className="margin-top">Description</h3>
             <textarea
               placeholder="Update a job description"
-              value={location.state.job.body}
+              value={location?.state?.job?.body}
               onChange={handleChange}
               name="text"
               className="job-input edit"
@@ -101,7 +101,7 @@ function JobForm() {
             <h3 className="margin-top">Location</h3>
             <input
               placeholder="Update a job location"
-              value={location.state.job.location}
+              value={location?.state?.job?.location}
               onChange={handleChange}
               name="text"
               className="job-input edit"
@@ -109,7 +109,7 @@ function JobForm() {
             <h3 className="margin-top">Salary</h3>
             <input
               placeholder="Update a job salary"
-              value={location.state.job.salary}
+              value={location?.state?.job?.salary}
               onChange={handleChange}
               name="text"
               className="job-input edit"
