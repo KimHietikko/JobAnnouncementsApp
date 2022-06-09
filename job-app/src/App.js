@@ -2,11 +2,13 @@ import React from "react";
 import "./App.css";
 import JobForm from "./components/JobForm";
 import Home from "./components/Home";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { NotificationContainer } from "react-notifications";
 
-const App = () => {
+function App() {
   return (
     <div className="job-app">
+      <NotificationContainer />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -16,6 +18,6 @@ const App = () => {
       </Router>
     </div>
   );
-};
+}
 
 export default App;

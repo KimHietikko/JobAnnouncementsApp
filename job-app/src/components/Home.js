@@ -21,7 +21,7 @@ function Home() {
         onClick={() => routeChange(null, false)}
         className="add-new-job-button"
       >
-        Add new job
+        Add a new job
       </button>
       <JobList></JobList>
     </>

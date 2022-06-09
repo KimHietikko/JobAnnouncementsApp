@@ -1,9 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 
 function JobForm() {
@@ -30,13 +27,22 @@ function JobForm() {
         }
       )
         .then((res) => {
-          console.log("Success: ", res);
           navigate("../");
-          NotificationManager.success("Success message", "Title here");
+
+          if (!res.ok) {
+            NotificationManager.error(
+              "An error occured while editing the job",
+              "Error"
+            );
+          } else {
+            NotificationManager.success("A job edited successfully", "Success");
+          }
         })
         .catch((error) => {
-          console.error("Error: ", error);
-          NotificationManager.error("Error message", "Title here");
+          NotificationManager.error(
+            "An error occured while editing the job",
+            "Error"
+          );
         });
     } else {
       fetch("https://mockend.com/KimHietikko/reacttask/jobs/", {
@@ -47,20 +53,31 @@ function JobForm() {
         },
       })
         .then((res) => {
-          console.log("Success: ", res);
           navigate("../");
-          NotificationManager.success("Success message", "Title here");
+
+          if (!res.ok) {
+            NotificationManager.error(
+              "An error occured while adding a new job",
+              "Error"
+            );
+          } else {
+            NotificationManager.success(
+              "A new job added successfully",
+              "Success"
+            );
+          }
         })
         .catch((error) => {
-          console.error("Error: ", error);
-          NotificationManager.error("Error message", "Title here");
+          NotificationManager.error(
+            "An error occured while adding a new job",
+            "Error"
+          );
         });
     }
   };
 
   return (
     <>
-      <NotificationContainer />
       <form onSubmit={handleSubmit} className="job-form">
         {location.state.edit ? (
           <>

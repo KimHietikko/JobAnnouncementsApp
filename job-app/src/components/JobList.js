@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
+import { NotificationManager } from "react-notifications";
 
 function JobList() {
   useEffect(() => {
@@ -43,11 +44,16 @@ function JobList() {
       },
     })
       .then((res) => {
-        console.log("Success: ", res);
+        if (!res.ok) {
+          NotificationManager.error(
+            "An error occured while deleting the job",
+            "Error"
+          );
+        } else {
+          NotificationManager.success("A job deleted successfully", "Success");
+        }
       })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
+      .catch((error) => {});
   };
 
   return jobs.map((job, index) => (
